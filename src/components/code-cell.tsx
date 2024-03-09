@@ -22,11 +22,13 @@ const CodeCell = () => {
 					flexDirection: "row",
 				}}
 			>
-				<CondeEditor
-					onChange={(value) => setInput(value)}
-					initialValue='// 🤓 Lets get coding!'
-					theme='dark'
-				/>
+				<Resizable direction='horizontal'>
+					<CondeEditor
+						onChange={(value) => setInput(value)}
+						initialValue='// 🤓 Lets get coding!'
+						theme='dark'
+					/>
+				</Resizable>
 				<Preview code={code} />
 			</div>
 		</Resizable>
