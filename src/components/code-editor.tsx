@@ -22,7 +22,9 @@ const CondeEditor: React.FC<CodeEditorProps> = ({
 	) => {
 		editorRef.current = monacoEditor;
 		monacoEditor.onDidChangeModelContent(() => {
-			onChange(getValue());
+			setTimeout(() => {
+				onChange(getValue());
+			}, 0);
 		});
 	};
 
