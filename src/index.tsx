@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./state";
 import TextEditor from "./components/text-editor";
+import CodeCell from "./components/code-cell";
 
 const el = document.getElementById("root");
 
@@ -13,6 +14,7 @@ const App = () => {
 		<Provider store={store}>
 			<div>
 				<TextEditor />
+				<CodeCell />
 			</div>
 		</Provider>
 	);
