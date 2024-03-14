@@ -1,17 +1,23 @@
 import { useState, useEffect } from "react";
-import CondeEditor from "./code-editor";
+import CodeEditor from "./code-editor";
 import Preview from "./preview";
 import bundle from "../bundler";
 import Resizable from "./resizable";
+import { Cell } from "../state";
+import { useActions } from "../hooks/use-actions";
 
-const CodeCell = () => {
-	const [input, setInput] = useState("");
+interface CodeCellProps {
+	cell: Cell;
+}
+
+const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
 	const [code, setCode] = useState("");
 	const [err, setErr] = useState("");
+	const { updateCell } = useActions();
 
 	useEffect(() => {
 		const timer = setTimeout(async () => {
-			const output = await bundle(input);
+			const output = await bundle(cell.content);
 			if (typeof output === "string") {
 				setCode(output);
 			} else {
@@ -23,7 +29,7 @@ const CodeCell = () => {
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [input]);
+	}, [cell.content]);
 
 	return (
 		<Resizable direction='vertical'>
@@ -35,9 +41,9 @@ const CodeCell = () => {
 				}}
 			>
 				<Resizable direction='horizontal'>
-					<CondeEditor
-						onChange={(value) => setInput(value)}
-						initialValue='// 🤓 Lets get coding!'
+					<CodeEditor
+						onChange={(value) => updateCell(cell.id, value)}
+						initialValue={cell.content}
 						theme='dark'
 					/>
 				</Resizable>

@@ -10,7 +10,7 @@ interface CodeEditorProps {
 	onChange(value: string): void;
 }
 
-const CondeEditor: React.FC<CodeEditorProps> = ({
+const CodeEditor: React.FC<CodeEditorProps> = ({
 	onChange,
 	initialValue,
 	theme,
@@ -71,4 +71,4 @@ const CondeEditor: React.FC<CodeEditorProps> = ({
 	);
 };
 
-export default CondeEditor;
+export default CodeEditor;
