@@ -1,19 +1,18 @@
 import { ActionType } from "../action-types";
 import { Cell, CellTypes } from "../cell";
 
+export type Direction = "up" | "down";
 export interface MoveCellAction {
 	type: ActionType.MOVE_CELL;
 	payload: {
 		id: string;
-		direction: "up" | "down";
+		direction: Direction;
 	};
 }
-export type Direction = "up" | "down";
+
 export interface DeleteCellAction {
 	type: ActionType.DELETE_CELL;
-	payload: {
-		id: string;
-	};
+	payload: string;
 }
 
 export interface InsertCellAfterAction {
