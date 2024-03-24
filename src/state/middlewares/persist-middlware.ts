@@ -4,7 +4,7 @@ import { ActionType } from "../action-types";
 import { saveCells } from "../action-creators";
 import { RootState } from "../reducers";
 
-export const persistMiddleware = ({
+const persistMiddlware = ({
 	dispatch,
 	getState,
 }: {
@@ -12,6 +12,7 @@ export const persistMiddleware = ({
 	getState: () => RootState;
 }) => {
 	let timer: any;
+
 	return (next: (action: Action) => void) => {
 		return (action: Action) => {
 			next(action);
@@ -34,3 +35,5 @@ export const persistMiddleware = ({
 		};
 	};
 };
+
+export default persistMiddlware;
