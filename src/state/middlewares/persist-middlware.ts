@@ -13,7 +13,7 @@ export const persistMiddlware = ({
 }) => {
 	let timer: any;
 
-	return (next: (action: Action) => void) => {
+	return (next: Dispatch<Action>) => {
 		return (action: Action) => {
 			next(action);
 
