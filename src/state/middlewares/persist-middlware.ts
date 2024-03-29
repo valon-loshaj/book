@@ -4,7 +4,7 @@ import { ActionType } from "../action-types";
 import { saveCells } from "../action-creators";
 import { RootState } from "../reducers";
 
-const persistMiddlware = ({
+export const persistMiddlware = ({
 	dispatch,
 	getState,
 }: {
@@ -35,5 +35,3 @@ const persistMiddlware = ({
 		};
 	};
 };
-
-export default persistMiddlware;
